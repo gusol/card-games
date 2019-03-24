@@ -17,21 +17,19 @@ class StandardDeck:
 
     def __init__(self):
         self.cards = []
-        for i in range(0, StandardDeck._size // self.suits.__len__()):
-            card = Card(0, 'Spades')
-            self.cards.append(card)
+        StandardDeck.fill_suit('Spades', self.cards)
+        StandardDeck.fill_suit('Hearts', self.cards)
+        StandardDeck.fill_suit('Diamonds', self.cards)
+        StandardDeck.fill_suit('Clubs', self.cards)
 
-        for i in range(0, StandardDeck._size // self.suits.__len__()):
-            card = Card(0, 'Hearts')
-            self.cards.append(card)
-
-        for i in range(0, StandardDeck._size // self.suits.__len__()):
-            card = Card(0, 'Diamonds')
-            self.cards.append(card)
-
-        for i in range(0, StandardDeck._size // self.suits.__len__()):
-            card = Card(0, 'Clubs')
-            self.cards.append(card)
+    @staticmethod
+    def fill_suit(suit, cards):
+        cards.append(Card('A', suit))
+        for i in range(2, 11):
+            cards.append(Card(str(i), suit))
+        cards.append(Card('Q', suit))
+        cards.append(Card('J', suit))
+        cards.append(Card('K', suit))
 
 
 if __name__ == '__main__':
