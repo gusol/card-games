@@ -1,24 +1,26 @@
 import unittest
-from model import deck
+from model.cards import Card
 
 
 class CardTestCase(unittest.TestCase):
 
     def test_create(self):
-        self.assertIsNotNone(deck.Card('Ace', 'Spades'))
+        self.assertIsNotNone(Card('Ace', 'Spades'))
 
     def test_different(self):
-        first = deck.Card('Ace', 'Spades')
-        second = deck.Card('Ace', 'Hearts')
+        """Cards must be different based on rank or suit"""
+        first = Card('Ace', 'Spades')
+        second = Card('Ace', 'Hearts')
         self.assertNotEqual(first, second)
 
-        first = deck.Card('Ace', 'Spades')
-        second = deck.Card('Queen', 'Spades')
+        first = Card('Ace', 'Spades')
+        second = Card('Queen', 'Spades')
         self.assertNotEqual(first, second)
 
     def test_equals(self):
-        first = deck.Card('Ace', 'Spades')
-        second = deck.Card('Ace', 'Spades')
+        """Cards must be equal based on rank and suit"""
+        first = Card('Ace', 'Spades')
+        second = Card('Ace', 'Spades')
         self.assertIsNot(first, second)
         self.assertEqual(first, second)
 
